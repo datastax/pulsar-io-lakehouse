@@ -56,10 +56,9 @@
     <hadoop.version>3.4.2</hadoop.version>
     <hadoop.hdfs.version>3.3.2</hadoop.hdfs.version>
     <iceberg.version>0.13.1</iceberg.version>
-    <parquet.version>1.12.2</parquet.version>
+    <parquet.version>1.15.2</parquet.version>
     <hudi.version>0.12.3</hudi.version>
     <delta.version>0.3.0</delta.version>
-    <parquet.avro.version>1.15.2</parquet.avro.version>
     <netty.version>4.1.125.Final</netty.version>
     <gcs.version>hadoop3-2.2.1</gcs.version>
     <curator.version>5.9.0</curator.version>
@@ -240,7 +239,7 @@
       <dependency>
         <groupId>org.apache.parquet</groupId>
         <artifactId>parquet-avro</artifactId>
-        <version>${parquet.avro.version}</version>
+        <version>${parquet.version}</version>
       </dependency>
 
       <dependency>
