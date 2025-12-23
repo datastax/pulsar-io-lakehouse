@@ -47,26 +47,32 @@
     <testRetryCount>0</testRetryCount>
 
     <!-- connector dependencies -->
-    <jackson.version>2.13.2.1</jackson.version>
+    <jackson.version>2.17.2</jackson.version>
     <lombok.version>1.18.22</lombok.version>
     <pulsar.groupId>com.datastax.oss</pulsar.groupId>
     <pulsar.version>3.1.4.21</pulsar.version>
-    <log4j2.version>2.17.2</log4j2.version>
+    <log4j2.version>2.25.3</log4j2.version>
     <slf4j.version>1.7.25</slf4j.version>
-    <hadoop.version>3.2.4</hadoop.version>
+    <hadoop.version>3.4.2</hadoop.version>
+    <hadoop.hdfs.version>3.3.2</hadoop.hdfs.version>
     <iceberg.version>0.13.1</iceberg.version>
-    <parquet.version>1.12.0</parquet.version>
-    <hudi.version>0.12.2</hudi.version>
+    <parquet.version>1.12.2</parquet.version>
+    <hudi.version>0.12.3</hudi.version>
     <delta.version>0.3.0</delta.version>
-    <parquet.avro.version>1.12.2</parquet.avro.version>
-    <netty.version>4.1.77.Final</netty.version>
-    <aws.sdk.version>1.12.220</aws.sdk.version>
+    <parquet.avro.version>1.15.2</parquet.avro.version>
+    <netty.version>4.1.125.Final</netty.version>
     <gcs.version>hadoop3-2.2.1</gcs.version>
-    <curator.version>2.12.0</curator.version>
-    <snappy.java.version>1.1.8.4</snappy.java.version>
+    <curator.version>5.9.0</curator.version>
+    <snappy.java.version>1.1.10.4</snappy.java.version>
+    <protobuf3.version>3.25.5</protobuf3.version>
+    <nimbus.version>9.37.4</nimbus.version>
+    <jetty.version>9.4.57.v20241219</jetty.version>
+    <kotlin.version>1.6.0</kotlin.version>
 
     <!-- test dependencies -->
-    <testng.version>7.3.0</testng.version>
+    <testng.version>7.5.1</testng.version>
+    <junit.version>4.13.2</junit.version>
+    <lz4.version>1.8.1</lz4.version>
     <awaitility.version>4.0.3</awaitility.version>
     <mockito.version>3.12.4</mockito.version>
 
@@ -168,6 +174,12 @@
       <dependency>
         <groupId>io.netty</groupId>
         <artifactId>netty-common</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec-http2</artifactId>
         <version>${netty.version}</version>
       </dependency>
       <dependency>
@@ -284,17 +296,6 @@
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-aws</artifactId>
         <version>${hadoop.version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-bundle</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>com.amazonaws</groupId>
-        <artifactId>aws-java-sdk-bundle</artifactId>
-        <version>${aws.sdk.version}</version>
       </dependency>
 
       <dependency>
@@ -322,6 +323,41 @@
 
       <!-- Cloud dependencies end -->
 
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>com.google.protobuf</groupId>
+        <artifactId>protobuf-java</artifactId>
+        <version>${protobuf3.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-hdfs</artifactId>
+        <version>${hadoop.hdfs.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>com.nimbusds</groupId>
+        <artifactId>nimbus-jose-jwt</artifactId>
+        <version>${nimbus.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-server</artifactId>
+        <version>${jetty.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-stdlib</artifactId>
+        <version>${kotlin.version}</version>
+        <scope>runtime</scope>
+      </dependency>
 
       <!-- test dependencies -->
       <dependency>
@@ -340,6 +376,18 @@
         <groupId>org.awaitility</groupId>
         <artifactId>awaitility</artifactId>
         <version>${awaitility.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.lz4</groupId>
+        <artifactId>lz4-java</artifactId>
+        <version>${lz4.version}</version>
         <scope>test</scope>
       </dependency>
       <dependency>
@@ -523,6 +571,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>org.awaitility</groupId>
       <artifactId>awaitility</artifactId>
       <scope>test</scope>
@@ -546,16 +599,6 @@
           <groupId>org.apache.hadoop</groupId>
           <artifactId>hadoop-aws</artifactId>
           <version>${hadoop.version}</version>
-          <exclusions>
-            <exclusion>
-              <groupId>com.amazonaws</groupId>
-              <artifactId>aws-java-sdk-bundle</artifactId>
-            </exclusion>
-          </exclusions>
-        </dependency>
-        <dependency>
-          <groupId>com.amazonaws</groupId>
-          <artifactId>aws-java-sdk-bundle</artifactId>
         </dependency>
 
         <dependency>
