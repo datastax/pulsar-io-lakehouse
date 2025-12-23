@@ -59,6 +59,7 @@
     <parquet.version>1.15.2</parquet.version>
     <hudi.version>0.12.3</hudi.version>
     <delta.version>0.3.0</delta.version>
+    <aws.sdk.version>1.12.220</aws.sdk.version>
     <netty.version>4.1.125.Final</netty.version>
     <gcs.version>hadoop3-2.2.1</gcs.version>
     <curator.version>5.9.0</curator.version>
@@ -295,6 +296,12 @@
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-aws</artifactId>
         <version>${hadoop.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.amazonaws</groupId>
+        <artifactId>aws-java-sdk-bundle</artifactId>
+        <version>${aws.sdk.version}</version>
       </dependency>
 
       <dependency>
@@ -598,6 +605,11 @@
           <groupId>org.apache.hadoop</groupId>
           <artifactId>hadoop-aws</artifactId>
           <version>${hadoop.version}</version>
+        </dependency>
+
+        <dependency>
+          <groupId>com.amazonaws</groupId>
+          <artifactId>aws-java-sdk-bundle</artifactId>
         </dependency>
 
         <dependency>
