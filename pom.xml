@@ -158,14 +158,6 @@
             <artifactId>*</artifactId>
           </exclusion>
           <exclusion>
-            <artifactId>jetty-servlet</artifactId>
-            <groupId>org.eclipse.jetty</groupId>
-          </exclusion>
-          <exclusion>
-            <artifactId>jetty-util</artifactId>
-            <groupId>org.eclipse.jetty</groupId>
-          </exclusion>
-          <exclusion>
             <artifactId>jetty-webapp</artifactId>
             <groupId>org.eclipse.jetty</groupId>
           </exclusion>
@@ -354,6 +346,20 @@
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-server</artifactId>
+        <version>${jetty.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- Required to resolve java.lang.AbstractMethodError in HoodieWriterTest -->
+      <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-servlet</artifactId>
+        <version>${jetty.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- Required to resolve java.lang.AbstractMethodError in HoodieWriterTest -->
+      <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-util</artifactId>
         <version>${jetty.version}</version>
         <scope>runtime</scope>
       </dependency>
