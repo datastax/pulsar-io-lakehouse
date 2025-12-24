@@ -158,6 +158,14 @@
             <artifactId>*</artifactId>
           </exclusion>
           <exclusion>
+            <artifactId>jetty-servlet</artifactId>
+            <groupId>org.eclipse.jetty</groupId>
+          </exclusion>
+          <exclusion>
+            <artifactId>jetty-util</artifactId>
+            <groupId>org.eclipse.jetty</groupId>
+          </exclusion>
+          <exclusion>
             <artifactId>jetty-webapp</artifactId>
             <groupId>org.eclipse.jetty</groupId>
           </exclusion>
