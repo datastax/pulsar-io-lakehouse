@@ -45,10 +45,11 @@
     <testRetryCount>0</testRetryCount>
 
     <!-- connector dependencies -->
-    <jackson.version>2.17.2</jackson.version>
+    <zookeeper.version>3.9.5</zookeeper.version>
+    <jackson.version>2.18.6</jackson.version>
     <lombok.version>1.18.22</lombok.version>
     <pulsar.groupId>com.datastax.oss</pulsar.groupId>
-    <pulsar.version>3.1.4.21</pulsar.version>
+    <pulsar.version>3.1.4.22</pulsar.version>
     <log4j2.version>2.25.3</log4j2.version>
     <slf4j.version>1.7.25</slf4j.version>
     <hadoop.version>3.4.2</hadoop.version>
@@ -58,14 +59,16 @@
     <hudi.version>0.12.3</hudi.version>
     <delta.version>0.3.0</delta.version>
     <aws.sdk.version>1.12.220</aws.sdk.version>
-    <netty.version>4.1.125.Final</netty.version>
+    <netty.version>4.1.130.Final</netty.version>
     <gcs.version>hadoop3-2.2.31</gcs.version>
     <curator.version>5.9.0</curator.version>
     <snappy.java.version>1.1.10.4</snappy.java.version>
     <protobuf3.version>3.25.5</protobuf3.version>
     <nimbus.version>9.37.4</nimbus.version>
-    <jetty.version>9.4.57.v20241219</jetty.version>
+    <jetty.version>9.4.58.v20250814</jetty.version>
     <kotlin.version>1.6.0</kotlin.version>
+    <aircompressor.version>2.0.3</aircompressor.version>
+    <grpc.version>1.75.0</grpc.version>
 
     <!-- test dependencies -->
     <testng.version>7.5.1</testng.version>
@@ -178,6 +181,12 @@
       <dependency>
         <groupId>io.netty</groupId>
         <artifactId>netty-codec-http2</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec-smtp</artifactId>
         <version>${netty.version}</version>
       </dependency>
       <dependency>
@@ -308,6 +317,12 @@
         <version>${gcs.version}</version>
         <classifier>shaded</classifier>
       </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.grpc</groupId>
+        <artifactId>grpc-netty-shaded</artifactId>
+        <version>${grpc.version}</version>
+      </dependency>
 
       <dependency>
         <groupId>org.apache.hadoop</groupId>
@@ -332,6 +347,27 @@
         <groupId>com.google.protobuf</groupId>
         <artifactId>protobuf-java</artifactId>
         <version>${protobuf3.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>com.google.protobuf</groupId>
+        <artifactId>protobuf-java-util</artifactId>
+        <version>${protobuf3.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.airlift</groupId>
+        <artifactId>aircompressor</artifactId>
+        <version>${aircompressor.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>org.apache.zookeeper</groupId>
+        <artifactId>zookeeper</artifactId>
+        <version>${zookeeper.version}</version>
         <scope>runtime</scope>
       </dependency>
       <!-- Override transitive dependency version to fix vulnerability -->
