@@ -46,11 +46,11 @@
 
     <!-- connector dependencies -->
     <zookeeper.version>3.9.5</zookeeper.version>
-    <jackson.version>2.18.6</jackson.version>
+    <jackson.version>2.21.2</jackson.version>
     <lombok.version>1.18.22</lombok.version>
     <pulsar.groupId>com.datastax.oss</pulsar.groupId>
     <pulsar.version>3.1.4.22</pulsar.version>
-    <log4j2.version>2.25.3</log4j2.version>
+    <log4j2.version>2.25.4</log4j2.version>
     <slf4j.version>1.7.25</slf4j.version>
     <hadoop.version>3.4.2</hadoop.version>
     <hadoop.hdfs.version>3.3.2</hadoop.hdfs.version>
@@ -59,15 +59,16 @@
     <hudi.version>0.12.3</hudi.version>
     <delta.version>0.3.0</delta.version>
     <aws.sdk.version>1.12.220</aws.sdk.version>
-    <netty.version>4.1.130.Final</netty.version>
+    <netty.version>4.1.132.Final</netty.version>
     <gcs.version>hadoop3-2.2.31</gcs.version>
     <curator.version>5.9.0</curator.version>
     <snappy.java.version>1.1.10.4</snappy.java.version>
     <protobuf3.version>3.25.5</protobuf3.version>
     <nimbus.version>9.37.4</nimbus.version>
     <jetty.version>9.4.58.v20250814</jetty.version>
-    <kotlin.version>1.6.0</kotlin.version>
+    <kotlin.version>2.1.0</kotlin.version>
     <aircompressor.version>2.0.3</aircompressor.version>
+    <bouncycastle.version>1.84</bouncycastle.version>
     <grpc.version>1.75.0</grpc.version>
 
     <!-- test dependencies -->
@@ -179,8 +180,20 @@
       </dependency>
       <!-- Override transitive dependency version to fix vulnerability -->
       <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcprov-jdk18on</artifactId>
+        <version>${bouncycastle.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
         <groupId>io.netty</groupId>
         <artifactId>netty-codec-http2</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec-http</artifactId>
         <version>${netty.version}</version>
       </dependency>
       <!-- Override transitive dependency version to fix vulnerability -->
