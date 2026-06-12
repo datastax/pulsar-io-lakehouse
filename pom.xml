@@ -30,7 +30,7 @@
 
   <groupId>org.apache.pulsar.ecosystem</groupId>
   <artifactId>pulsar-io-lakehouse</artifactId>
-  <version>3.3.5.7</version>
+  <version>3.3.5.8-SNAPSHOT</version>
   <name>Pulsar Ecosystem :: IO Connector :: Lake House</name>
   <description>It is a lakehouse connector streaming convert data between lakehouse and Apache Pulsar.</description>
 
@@ -104,7 +104,7 @@
     <connection>scm:git:git@github.com:datastax/pulsar-io-lakehouse.git</connection>
     <developerConnection>scm:git:git@github.com:datastax/pulsar-io-lakehouse.git</developerConnection>
     <url>https://github.com/datastax/pulsar-io-lakehouse</url>
-    <tag>v3.3.5.7</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <!-- keep all the dependencies used by all modules here -->
