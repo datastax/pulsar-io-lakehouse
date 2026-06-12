@@ -59,7 +59,7 @@
     <hudi.version>0.12.3</hudi.version>
     <delta.version>0.3.0</delta.version>
     <aws.sdk.version>1.12.220</aws.sdk.version>
-    <netty.version>4.1.132.Final</netty.version>
+    <netty.version>4.1.135.Final</netty.version>
     <gcs.version>hadoop3-2.2.31</gcs.version>
     <curator.version>5.9.0</curator.version>
     <snappy.java.version>1.1.10.4</snappy.java.version>
@@ -70,6 +70,8 @@
     <aircompressor.version>2.0.3</aircompressor.version>
     <bouncycastle.version>1.84</bouncycastle.version>
     <grpc.version>1.75.0</grpc.version>
+    <commons-configuration2.version>2.15.0</commons-configuration2.version>
+    <opentelemetry.version>1.62.0</opentelemetry.version>
 
     <!-- test dependencies -->
     <testng.version>7.5.1</testng.version>
@@ -187,7 +189,37 @@
       <!-- Override transitive dependency version to fix vulnerability -->
       <dependency>
         <groupId>io.netty</groupId>
+        <artifactId>netty-handler</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-handler-proxy</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.netty</groupId>
         <artifactId>netty-codec-http2</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec-dns</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec-haproxy</artifactId>
         <version>${netty.version}</version>
       </dependency>
       <!-- Override transitive dependency version to fix vulnerability -->
@@ -199,8 +231,56 @@
       <!-- Override transitive dependency version to fix vulnerability -->
       <dependency>
         <groupId>io.netty</groupId>
+        <artifactId>netty-codec-mqtt</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec-redis</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.netty</groupId>
         <artifactId>netty-codec-smtp</artifactId>
         <version>${netty.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-resolver-dns</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-transport-native-unix-common</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-transport-sctp</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec-smtp</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-configuration2</artifactId>
+        <version>${commons-configuration2.version}</version>
+      </dependency>
+      <!-- Override transitive dependency version to fix vulnerability -->
+      <dependency>
+        <groupId>io.opentelemetry</groupId>
+        <artifactId>opentelemetry-api</artifactId>
+        <version>${opentelemetry.version}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.logging.log4j</groupId>
@@ -627,6 +707,10 @@
         <exclusion>
           <artifactId>log4j</artifactId>
           <groupId>log4j</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>javax.el</artifactId>
+          <groupId>org.glassfish</groupId>
         </exclusion>
       </exclusions>
     </dependency>
