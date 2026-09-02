@@ -269,6 +269,18 @@
           </exclusion>
         </exclusions>
       </dependency>
+      <dependency>
+        <groupId>org.apache.hudi</groupId>
+        <artifactId>hudi-timeline-service</artifactId>
+        <version>${hudi.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.hbase</groupId>
+        <artifactId>hbase-http</artifactId>
+        <version>2.4.9</version>
+        <scope>provided</scope>
+      </dependency>
       <!--  Hoodie dependencies end    -->
 
       <!-- Cloud dependencies begin -->
