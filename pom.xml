@@ -269,6 +269,18 @@
           </exclusion>
         </exclusions>
       </dependency>
+      <dependency>
+        <groupId>org.apache.hudi</groupId>
+        <artifactId>hudi-timeline-service</artifactId>
+        <version>${hudi.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.hbase</groupId>
+        <artifactId>hbase-http</artifactId>
+        <version>2.4.9</version>
+        <scope>provided</scope>
+      </dependency>
       <!--  Hoodie dependencies end    -->
 
       <!-- Cloud dependencies begin -->
@@ -508,18 +520,6 @@
         <exclusion>
           <artifactId>log4j</artifactId>
           <groupId>log4j</groupId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.eclipse.jetty</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.eclipse.jetty.websocket</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.apache.hbase.thirdparty</groupId>
-          <artifactId>hbase-shaded-jetty</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
