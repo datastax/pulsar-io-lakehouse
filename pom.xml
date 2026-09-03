@@ -63,9 +63,9 @@
     <gcs.version>hadoop3-2.2.31</gcs.version>
     <curator.version>5.9.0</curator.version>
     <snappy.java.version>1.1.10.4</snappy.java.version>
+    <jetty.version>9.4.58.v20250814</jetty.version>
     <protobuf3.version>3.25.5</protobuf3.version>
     <nimbus.version>9.37.4</nimbus.version>
-    <jetty.version>9.4.58.v20250814</jetty.version>
     <kotlin.version>2.1.0</kotlin.version>
     <aircompressor.version>2.0.3</aircompressor.version>
     <bouncycastle.version>1.84</bouncycastle.version>
@@ -88,7 +88,7 @@
     <nifi.nar.plugin.version>1.2.0</nifi.nar.plugin.version>
     <puppycrawl.checkstyle.version>8.37</puppycrawl.checkstyle.version>
     <spotbugs-maven-plugin.version>4.2.2</spotbugs-maven-plugin.version>
-    <cloudPkgSuffix />
+    <cloudPkgSuffix></cloudPkgSuffix>
     <test.additional.args />
   </properties>
 
@@ -391,6 +391,20 @@
       </dependency>
       <!--  Hoodie dependencies end    -->
 
+      <!-- Import the Jetty 9.4.x BOM to pin all Jetty artifacts to the latest patch
+           in one entry, fixing CVEs across all transitive paths:
+           - hadoop-yarn-client → websocket-client + jetty-client/http/io (compile)
+           - hadoop-hdfs → jetty-server/util/util-ajax (runtime)
+           - javalin → jetty-server/webapp/servlet/security + websocket-server (provided, not packaged)
+           Jetty 9.4.x is the only series compatible with javalin:4.6.7 and hadoop 3.x. -->
+      <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-bom</artifactId>
+        <version>${jetty.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
       <!-- Cloud dependencies begin -->
       <dependency>
         <groupId>org.apache.hadoop</groupId>
@@ -475,27 +489,6 @@
         <groupId>com.nimbusds</groupId>
         <artifactId>nimbus-jose-jwt</artifactId>
         <version>${nimbus.version}</version>
-        <scope>runtime</scope>
-      </dependency>
-      <!-- Override transitive dependency version to fix vulnerability -->
-      <dependency>
-        <groupId>org.eclipse.jetty</groupId>
-        <artifactId>jetty-server</artifactId>
-        <version>${jetty.version}</version>
-        <scope>runtime</scope>
-      </dependency>
-      <!-- Required to resolve java.lang.AbstractMethodError in HoodieWriterTest -->
-      <dependency>
-        <groupId>org.eclipse.jetty</groupId>
-        <artifactId>jetty-servlet</artifactId>
-        <version>${jetty.version}</version>
-        <scope>runtime</scope>
-      </dependency>
-      <!-- Required to resolve java.lang.AbstractMethodError in HoodieWriterTest -->
-      <dependency>
-        <groupId>org.eclipse.jetty</groupId>
-        <artifactId>jetty-util</artifactId>
-        <version>${jetty.version}</version>
         <scope>runtime</scope>
       </dependency>
       <!-- Override transitive dependency version to fix vulnerability -->
