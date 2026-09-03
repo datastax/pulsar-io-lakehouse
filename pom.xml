@@ -30,7 +30,7 @@
 
   <groupId>org.apache.pulsar.ecosystem</groupId>
   <artifactId>pulsar-io-lakehouse</artifactId>
-  <version>3.3.5.8-SNAPSHOT</version>
+  <version>3.3.5.8</version>
   <name>Pulsar Ecosystem :: IO Connector :: Lake House</name>
   <description>It is a lakehouse connector streaming convert data between lakehouse and Apache Pulsar.</description>
 
@@ -88,7 +88,7 @@
     <nifi.nar.plugin.version>1.2.0</nifi.nar.plugin.version>
     <puppycrawl.checkstyle.version>8.37</puppycrawl.checkstyle.version>
     <spotbugs-maven-plugin.version>4.2.2</spotbugs-maven-plugin.version>
-    <cloudPkgSuffix></cloudPkgSuffix>
+    <cloudPkgSuffix />
     <test.additional.args />
   </properties>
 
@@ -104,7 +104,7 @@
     <connection>scm:git:git@github.com:datastax/pulsar-io-lakehouse.git</connection>
     <developerConnection>scm:git:git@github.com:datastax/pulsar-io-lakehouse.git</developerConnection>
     <url>https://github.com/datastax/pulsar-io-lakehouse</url>
-    <tag>HEAD</tag>
+    <tag>v3.3.5.8</tag>
   </scm>
 
   <!-- keep all the dependencies used by all modules here -->
